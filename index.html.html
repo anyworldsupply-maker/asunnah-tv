@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="am" dir="ltr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">የአስ ሱናህ ቲቪ ድረ ገጽ ነው</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .side-image-left, .side-image-right {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 220px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border: 3px solid #d4af37;
+            z-index: 100;
+        }
+        .side-image-left { left: 20px; }
+        .side-image-right { right: 20px; }
+
+        .app-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .top-nav-bar {
+            background: #fff;
+            border-radius: 10px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-top: 4px solid #d4af37;
+        }
+        .menu-dropdown-container {
+            position: relative;
+        }
+        .menu-toggle-btn {
+            background: #0f5132;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 45px;
+            background: #fff;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 250px;
+            z-index: 1000;
+            list-style: none;
+            padding: 8px 0;
+            margin: 0;
+        }
+        .dropdown-menu li button {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            text-align: right;
+            font-size: 13px;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dropdown-menu li button:hover {
+            background: #f1f5f9;
+            color: #0f5132;
+        }
+        .dropdown-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 5px 0;
+        }
+
+        .main-wrapper {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #0f5132 0%, #198754 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 5px solid #d4af37;
+        }
+        .header-banner h1 {
+            font-size: 22px;
+            margin: 5px 0;
+            color: #fff;
+        }
+        .header-banner p {
+            font-size: 13px;
+            color: #e2e8f0;
+            margin: 0;
+            font-weight: bold;
+        }
+        .container {
+            padding: 25px;
+        }
+        
+        .auth-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            max-width: 450px;
+            margin: 20px auto;
+        }
+        .auth-card h2 {
+            color: #0f5132;
+            margin-top: 0;
+            font-size: 22px;
+        }
+        .auth-card p.subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="tel"], input[type="email"], input[type="password"], input[type="file"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background: #fff;
+            font-family: inherit;
+        }
+        button.btn-primary {
+            background-color: #198754;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button.btn-primary:hover {
+            background-color: #146c43;
+        }
+        .toggle-auth {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #0284c7;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .user-header-bar {
+            background: #d1e7dd;
+            color: #0f5132;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .support-card {
+            background: linear-gradient(135deg, #fff9e6 0%, #fef3c7 100%);
+            border: 2px dashed #d4af37;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .support-card h3 {
+            color: #854d0e;
+            margin: 0 0 8px 0;
+            font-size: 17px;
+        }
+        .support-card p {
+            color: #713f12;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .price-badge {
+            display: inline-block;
+            background-color: #d97706;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #fafbfc;
+            display: none;
+        }
+        .payment-box {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .payment-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .bank-logo {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+            border: 1px solid #ddd;
+        }
+        .bank-details h4 {
+            margin: 0 0 3px 0;
+            font-size: 15px;
+            color: #2c3e50;
+        }
+        .bank-details p {
+            margin: 0;
+            font-size: 15px;
+            font-weight: bold;
+            color: #d97706;
+        }
+        .bank-details span {
+            font-size: 12px;
+            color: #666;
+        }
+        .telegram-box {
+            background: #e8f4fd;
+            border: 1px solid #90cdf4;
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 20px;
+        }
+        .vip-box {
+            background: #fffbeb;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            margin-top: 15px;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .video-ad-overlay-top {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            background: rgba(15, 81, 50, 0.92);
+            border: 2px solid #d4af37;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 6px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 15;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .video-ad-text {
+            font-size: 13px;
+            font-weight: bold;
+            margin: 0;
+            color: #fff3cd;
+        }
+        .video-ad-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .video-watermark-bottom {
+            position: absolute;
+            bottom: 45px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.65);
+            border-left: 3px solid #d4af37;
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
+            pointer-events: none;
+            letter-spacing: 0.5px;
+        }
+
+        .comments-section {
+            margin-top: 30px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .comments-section h3 {
+            color: #0f5132;
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 8px;
+        }
+        .comment-box-area textarea {
+            width: 100%;
+            height: 70px;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            resize: vertical;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        .comment-list {
+            margin-top: 20px;
+        }
+        .comment-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .comment-user {
+            font-weight: bold;
+            color: #0f5132;
+        }
+        .comment-body {
+            font-size: 14px;
+            color: #333;
+            word-break: break-word;
+            margin-bottom: 8px;
+        }
+        .comment-footer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn-like, .btn-reply-toggle {
+            background: none;
+            border: 1px solid #cbd5e0;
+            padding: 3px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-like:hover, .btn-reply-toggle:hover {
+            background: #e2e8f0;
+        }
+        .btn-delete-comment {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .btn-delete-comment:hover {
+            background: #f87171;
+            color: white;
+        }
+        .replies-container {
+            margin-top: 10px;
+            border-left: 3px solid #198754;
+            padding-left: 12px;
+        }
+        .reply-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-top: 8px;
+            font-size: 13px;
+        }
+        .reply-box-area {
+            margin-top: 10px;
+            display: none;
+        }
+        .reply-box-area textarea {
+            width: 100%;
+            height: 50px;
+            padding: 8px;
+            font-size: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .error-msg {
+            color: #e53e3e;
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .success-msg {
+            color: #27ae60;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .social-btn {
+            display: block;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e0;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .social-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .admin-table th, .admin-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 12px;
+        }
+        .admin-table th {
+            background-color: #0f5132;
+            color: white;
+            font-weight: bold;
+        }
+        .badge-paid {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        .badge-unpaid {
+            background-color: #f8d7da;
+            color: #842029;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        .badge-views {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .btn-revoke {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .btn-revoke:hover {
+            background-color: #bb2d3b;
+        }
+        .btn-approve {
+            background-color: #198754;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            display: inline-block;
+        }
+        .btn-approve:hover {
+            background-color: #146c43;
+        }
+        .btn-vip-gen {
+            background-color: #d97706;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            display: inline-block;
+        }
+        .btn-vip-gen:hover {
+            background-color: #b45309;
+        }
+        .btn-delete-user {
+            background-color: #991b1b;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .btn-delete-user:hover {
+            background-color: #7f1d1d;
+        }
+
+        .menzuma-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .menzuma-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .menzuma-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .menzuma-thumb-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background-color: #000;
+        }
+        .menzuma-thumb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-icon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(220, 38, 38, 0.85);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .menzuma-info {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .menzuma-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0f5132;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+        .menzuma-channel {
+            font-size: 12px;
+            color: #666;
+        }
+
+        @media (max-width: 1150px) {
+            .side-image-left, .side-image-right { display: none; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <img src="amirr.jpg" onerror="this.src='amirr.png'; this.onerror=function(){this.style.display='none';}" alt="አሚር ሁሴን" class="side-image-left">
+    <img src="amirr.jpg" onerror="this.src='amirr.png'; this.onerror=function(){this.style.display='none';}" alt="አሚር ሁሴን" class="side-image-right">
+
+    <div class="app-container">
+        
+        <div id="topNavBar" class="top-nav-bar">
+            <div class="user-header-bar" id="userGreeting">👋 እንኳን ደህና መጡ!</div>
+            
+            <div class="menu-dropdown-container">
+                <button class="menu-toggle-btn" onclick="toggleMenuDropdown()">☰</button>
+                <ul id="dropdownMenu" class="dropdown-menu">
+                    <li><button onclick="switchTab('mediaSection')"><span data-key="menu_media">🎥 መንዙማ እና ይዘቶች</span> <span>▶</span></button></li>
+                    <div class="dropdown-divider"></div>
+                    <li style="padding: 5px 15px; font-size: 11px; font-weight: bold; color: #888;" data-key="menu_settings">ስለ ራስ (Settings)</li>
+                    <li><button onclick="switchTab('passwordSection')"><span data-key="menu_password">🔑 ፓስዋርድ መቀየር</span> <span>✏️</span></button></li>
+                    <li><button onclick="switchTab('languageSection')"><span data-key="menu_language">🌐 ቋንቋ (Language)</span> <span>⚙️</span></button></li>
+                    <div class="dropdown-divider"></div>
+                    <li style="padding: 5px 15px; font-size: 11px; font-weight: bold; color: #888;" data-key="menu_social">የአስ ሱናህ ቲቪ ሶሻል ሚዲያ</li>
+                    <li><button onclick="window.open('http://www.youtube.com/@as-sunnahtvofficial-1', '_blank')">🔴 <span data-key="social_youtube">ዩቲዩብ ቻናል</span> <span>🔗</span></button></li>
+                    <li><button onclick="window.open('https://www.facebook.com/share/1FAES5hB44/', '_blank')">🔵 <span data-key="social_facebook">ፌስቡክ ገጽ</span> <span>🔗</span></button></li>
+                    <li><button onclick="window.open('https://www.tiktok.com/@assunnah.tv2?_r=1&_t=ZS-9AvhGfa6qaQ', '_blank')">⬛ <span data-key="social_tiktok">ቲክቶክ አካውንት</span> <span>🔗</span></button></li>
+                    <li><button onclick="window.open('https://t.me/AssunnahTVOfficial', '_blank')">✈️ <span data-key="social_telegram">ቴሌግራም ቻናል</span> <span>🔗</span></button></li>
+                    <div class="dropdown-divider"></div>
+                    <li><button onclick="switchTab('huyamSection')"><span data-key="menu_huyam">🎧 ሁያም ቲዩብ መንዙማዎች</span> <span>✨</span></button></li>
+                    <li><button onclick="switchTab('donateSection')"><span data-key="menu_donate">🤲 አስ-ሱናህን መርዳት</span> <span>❤️</span></button></li>
+                    
+                    <div id="adminMenuLink" style="display: none;">
+                        <div class="dropdown-divider"></div>
+                        <li><button onclick="openAdminPanel()" style="color: #d97706; font-weight: bold;">🛡️ የአድሚን ዳሽቦርድ (Admin) <span>📊</span></button></li>
+                    </div>
+                    
+                    <div class="dropdown-divider"></div>
+                    <li><button onclick="handleLogout()" style="color: #dc3545;"><span data-key="menu_logout">🚪 ውጣ (Logout)</span> <span>⮑</span></button></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-wrapper">
+            <div class="header-banner">
+                <h1 data-key="banner_title">የአስ ሱናህ ቲቪ ድረ ገጽ ነው</h1>
+                <p data-key="banner_subtitle">ሁያም ቲዩብ</p>
+            </div>
+
+            <div class="container">
+
+                <div id="authSection" class="auth-card">
+                    <h2 data-key="auth_welcome">እንኳን ወደ አስ-ሱናህ ቲቪ በደህና መጣችሁ!</h2>
+                    <p class="subtitle" data-key="auth_subtitle">የተመረጡ መንዙማዎችን ለማግኘት እባክዎ አካውንት ይፍጠሩ ወይም ይግቡ</p>
+
+                    <div id="loginForm">
+                        <div class="form-group">
+                            <label for="userIdentifier" data-key="label_id">ስልክ ቁጥር ወይም ኢሜል፡</label>
+                            <input type="text" id="userIdentifier" placeholder="ስልክ (09...) ወይም ኢሜል ያስገቡ">
+                        </div>
+                        <div class="form-group">
+                            <label for="userPassword" data-key="label_pass">የሚስጥር ቃል (Password)፡</label>
+                            <input type="password" id="userPassword" placeholder="የሚስጥር ቃል ያስገቡ">
+                        </div>
+                        <button class="btn-primary" onclick="handleLogin()" data-key="btn_login">ግባ (Sign In)</button>
+                        <p id="authError" class="error-msg"></p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                            <span class="toggle-auth" onclick="toggleAuthMode('register')" data-key="toggle_register">አዲስ አካውንት መፍጠር?</span>
+                            <span class="toggle-auth" onclick="toggleAuthMode('forgot')" style="color: #d97706;">ፓስዋርድ ረስተዋል?</span>
+                        </div>
+                    </div>
+
+                    <div id="adminLoginForm" style="display: none;">
+                        <h3 style="color: #d97706; margin-top: 0;">🛡️ የአድሚን መግቢያ ፓነል</h3>
+                        <div class="form-group">
+                            <label>የአድሚን ሚስጥር ቃል (Admin Secret Key):</label>
+                            <input type="password" id="adminSecretInput" placeholder="የአድሚን ፓስዋርድ ያስገቡ...">
+                        </div>
+                        <button class="btn-primary" onclick="handleAdminLogin()" style="background-color: #d97706;">አድሚን ሆኖ ግባ</button>
+                        <p id="adminAuthError" class="error-msg"></p>
+                        <div class="toggle-auth" onclick="toggleAuthMode('login')">← ወደ ተጠቃሚዎች መግቢያ ተመለስ</div>
+                    </div>
+
+                    <!-- 🌟 አዲሱ የፎርጌት ፓስዋርድ አሰራር -->
+                    <div id="forgotForm" style="display: none;">
+                        <h3 style="color: #d97706; margin-top: 0;">🔑 ፓስዋርድ ማግኛ (Forgot Password)</h3>
+                        <p style="font-size: 13px; color: #555;">የተመዘገቡበትን ስልክ ቁጥር ወይም ኢሜል ያስገቡ። ሲስተሙ አዲስ ጊዜያዊ ፓስዋርድ ወደ አድሚን ቦት ይልካልዎታል።</p>
+                        <div class="form-group">
+                            <label>የተመዘገበበት ስልክ ወይም ኢሜል፡</label>
+                            <input type="text" id="forgotIdentifier" placeholder="ስልክ (09...) ወይም ኢሜል ያስገቡ">
+                        </div>
+                        <button class="btn-primary" onclick="handleForgotPasswordRequest()" style="background-color: #d97706;">ጊዜያዊ ፓስዋርድ ጠይቅ</button>
+                        <p id="forgotError" class="error-msg"></p>
+                        <div class="toggle-auth" onclick="toggleAuthMode('login')">← ወደ መግቢያ ተመለስ</div>
+                    </div>
+
+                    <div id="registerForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="regIdentifier" data-key="label_id">ስልክ ቁጥር ወይም ኢሜል፡</label>
+                            <input type="text" id="regIdentifier" placeholder="ስልክ (09...) ወይም ኢሜል ያስገቡ">
+                        </div>
+                        <div class="form-group">
+                            <label for="regTelegram" data-key="label_telegram">የቴሌግራም ዩዘርነምዎ (ለምሳሌ: @username)፡</label>
+                            <input type="text" id="regTelegram" placeholder="@your_username ያስገቡ">
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword" data-key="label_newpass">አዲስ የሚስጥር ቃል (Password) ይፍጠሩ፡</label>
+                            <input type="password" id="regPassword" placeholder="ቢያንስ 4 ፊደል/ቁጥር">
+                        </div>
+
+                        <button id="regBtn" class="btn-primary" onclick="handleRegisterRequest()" style="background-color: #0284c7;" data-key="btn_send_otp">የምዝገባ ጥያቄ ላክ (Send OTP)</button>
+                        <p id="regError" class="error-msg"></p>
+                        <div class="toggle-auth" onclick="toggleAuthMode('login')" data-key="toggle_login">አካውንት አለዎት? ይግቡ (Sign In)</div>
+                    </div>
+
+                    <div id="verifyForm" style="display: none;">
+                        <div class="form-group">
+                            <label style="color: #0f5132; font-weight: bold;" data-key="label_otp">በቴሌግራም የተላከልዎትን የማረጋገጫ ኮድ ያስገቡ፡</label>
+                            <input type="text" id="otpCodeInput" placeholder="የማረጋገጫ ኮድ ያስገቡ...">
+                        </div>
+                        <button class="btn-primary" onclick="handleVerifyOtp()" style="background-color: #d97706;" data-key="btn_verify">አረጋግጥ እና አካውንት ፍጠር</button>
+                        <p id="verifyError" class="error-msg"></p>
+                    </div>
+                </div>
+
+                <div id="mainDashboard" style="display: none;">
+
+                    <div id="adminPanelSection" class="section">
+                        <h2 style="color: #0f5132; border-bottom: 2px solid #d4af37; padding-bottom: 8px;">📊 የአስ-ሱናህ ቲቪ አድሚን ክትትል ገጽ</h2>
+                        <p style="font-size: 13px; color: #555;">አድሚኑ አዲስ የተመዘገቡ ተጠቃሚዎችን ማየት፣ ቪአይፒ ማድረግ፣ ወይም አካውንታቸውን ሙሉ በሙሉ ማስወጣት/ማጥፋት ይችላል።</p>
+                        
+                        <div style="display: flex; gap: 15px; margin: 15px 0;">
+                            <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; flex: 1; border: 1px solid #90cdf4;">
+                                <h4 style="margin: 0; color: #0284c7;">ጠቃሚ የተጠቃሚዎች ብዛት</h4>
+                                <p id="totalUsersCount" style="font-size: 22px; font-weight: bold; margin: 5px 0 0 0;">0</p>
+                            </div>
+                            <div style="background: #d1e7dd; padding: 15px; border-radius: 8px; flex: 1; border: 1px solid #a3cfbb;">
+                                <h4 style="margin: 0; color: #0f5132;">ይዘቱን የከፈቱ (Paid/VIP)</h4>
+                                <p id="paidUsersCount" style="font-size: 22px; font-weight: bold; margin: 5px 0 0 0;">0</p>
+                            </div>
+                            <div style="background: #f8d7da; padding: 15px; border-radius: 8px; flex: 1; border: 1px solid #f5c2c7;">
+                                <h4 style="margin: 0; color: #842029;">ክፍያ ያልፈጸሙ (Unpaid)</h4>
+                                <p id="unpaidUsersCount" style="font-size: 22px; font-weight: bold; margin: 5px 0 0 0;">0</p>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 20px; color: #2c3e50;">📋 የተጠቃሚዎች ሙሉ መዝገብ እና የአካውንት ማሰናበቻ (Admin Table)</h3>
+                        <div style="overflow-x: auto; margin-bottom: 25px;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ተ.ቁ</th>
+                                        <th>ስልክ / ኢሜል</th>
+                                        <th>ቴሌግራም ዩዘርነም</th>
+                                        <th>የዕይታ ብዛት (Views)</th>
+                                        <th>የክፍያ/የይዘት ሁኔታ</th>
+                                        <th>እርምጃዎች እና አውቶማቲክ ቴሌግራም</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminUsersTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 style="margin-top: 20px; color: #2c3e50;">💬 የተጠቃሚዎች አስተያየቶች አስተዳደር (Admin Comments Control)</h3>
+                        <div id="adminCommentsListContainer" style="margin-top: 10px;">
+                        </div>
+                    </div>
+
+                    <div id="mediaSection" class="section">
+                        <div class="support-card" id="artistSection">
+                            <h3 data-key="media_album_title">🌟 አዲስ የመንዙማ አልበም - በአሚር ሁሴን</h3>
+                            <p data-key="media_album_desc">ይህንን ኦፊሴላዊ የመንዙማ ስራ በህጋዊ መንገድ ሲገዙ <strong>አስ-ሱናህ ቲቪን</strong> እያበረታቱ ይገኛሉ።</p>
+                            <div class="price-badge" data-key="media_price">💰 የነጠላ መንዙማው ዋጋ፡ 200 ብር ብቻ</div>
+                        </div>
+
+                        <div id="paymentArea">
+                            <div class="payment-box">
+                                <div class="payment-info">
+                                    <img src="123456.png" onerror="this.src='123456.jpg';" alt="Telebirr" class="bank-logo">
+                                    <div class="bank-details">
+                                        <h4>ቴሌብር (Telebirr)</h4>
+                                        <p>0911391340</p>
+                                        <span data-key="bank_name">ስም: አስ-ሱናህ ቲቪ</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="payment-box">
+                                <div class="payment-info">
+                                    <img src="1234.png" onerror="this.src='1234.jpg';" alt="CBE" class="bank-logo">
+                                    <div class="bank-details">
+                                        <h4>የኢትዮጵያ ንግድ ባንክ (CBE)</h4>
+                                        <p>1000737083911</p>
+                                        <span data-key="bank_name">ስም: አስ-ሱናህ ቲቪ</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- የቪአይፒ ተጠቃሚዎች ኮድ ማስገቢያ ሳጥን -->
+                            <div class="vip-box">
+                                <h4 style="margin-top: 0; color: #854d0e;">⭐ የቪአይፒ ተጠቃሚ ነዎት?</h4>
+                                <p style="font-size: 13px; color: #713f12; margin-bottom: 10px;">የቪአይፒ ተጠቃሚ ከሆኑ በኤስኤምኤስ ወይም በቴሌግራም የተላኮሎትን ኮድ እባክዎን ከዚህ በታች ያስገቡ።</p>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="text" id="vipCodeInput" placeholder="የቪአይፒ ኮድ ያስገቡ (ለምሳሌ: VIP-XXXXXX)..." style="flex: 1;">
+                                    <button class="btn-primary" onclick="verifyVipCode()" style="background-color: #d97706; width: auto; padding: 10px 20px;">አረጋግጥ</button>
+                                </div>
+                                <p id="vipError" class="error-msg" style="font-size: 13px; margin-top: 5px;"></p>
+                            </div>
+
+                            <!-- ስክሪንሹት መላኪያ ሳጥን (ለተለመደው ክፍያ) -->
+                            <div class="telegram-box" id="submissionBox">
+                                <h4 style="margin-top: 0; color: #0284c7;" data-key="pay_info_title">✈️ የክፍያ ማረጋገጫ መረጃ እና ስክሪንሹት መላኪያ</h4>
+                                <label for="fullName" data-key="label_fullname">ሙሉ ስምዎ፡</label>
+                                <input type="text" id="fullName" placeholder="እባክዎ ትክክለኛ ስምዎን ያስገቡ">
+                                <label for="phoneNumber" data-key="label_phone">ስልክ ቁጥርዎ፡</label>
+                                <input type="tel" id="phoneNumber" placeholder="ለምሳሌ: 0912345678">
+                                <label for="accountHolder" data-key="label_acc_holder">የባንክ/የንግድ አካውንት ባለቤት ስም፡</label>
+                                <input type="text" id="accountHolder" placeholder="ክፍያውን የፈጸሙበት አካውንት ስም">
+                                <label for="receiptImage" data-key="label_receipt">የደረሰኝ ስክሪንሹት (Screenshot):</label>
+                                <input type="file" id="receiptImage" accept="image/*">
+                                <button id="sendBtn" class="btn-primary" onclick="submitReceiptToAdmin()" style="background-color: #0284c7; margin-top: 5px;" data-key="btn_send_receipt">ስክሪንሹት እና መረጃ ላክ</button>
+                                <p id="submitMsg" class="success-msg"></p>
+                            </div>
+
+                            <!-- አድሚኑ አፕሩቭ ሲያደርግ ኮዱ በቀጥታ እዚህ ተጠቃሚው ገጽ ላይ ይታያል -->
+                            <div class="telegram-box" id="activationCodeBox" style="display: none; background: #fff9e6; border: 2px solid #d4af37;">
+                                <h4 style="margin-top: 0; color: #854d0e;">🎉 ክፍያዎ ጸድቋል! የመክፈቻ ኮድዎ ከዚህ በታች ተፈጥሯል</h4>
+                                <p style="font-size: 13px; color: #713f12;">አድሚኑ ጥያቄዎን አረጋግጧል። የተሰጠዎት ልዩ ኮድ፡ <b id="userDisplayCode" style="color: #d97706; font-size: 16px; background: #fff; padding: 2px 8px; border: 1px dashed #d4af37; border-radius: 4px;">-</b></p>
+                                
+                                <div style="margin-top: 15px;">
+                                    <label for="activationCodeInput" style="font-weight: bold; color: #0f5132;">ይህንን ኮድ ከዚህ በታች ባለው ሳጥን ውስጥ ያስገቡ፦</label>
+                                    <input type="text" id="activationCodeInput" placeholder="ኮዱን እዚህ ያስገቡ (ለምሳሌ: AS-XXXXXX)...">
+                                    <button class="btn-primary" onclick="verifyActivationCode()" style="background-color: #d97706; margin-top: 10px;">ኮዱን አረጋግጥ እና ይዘቱን ክፈት</button>
+                                    <p id="activationError" class="error-msg"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ይዘቱ ክፍት ሲሆን የሚታየው ክፍል -->
+                        <div id="unlockedMediaContent" style="display: none; margin-top: 20px;">
+                            <h3 data-key="unlocked_title">🎉 እንኳን ደስ አሎት! ኮዱ በትክክል ገብቶ ይዘቱ ክፍት ሆኗል።</h3>
+                            <div style="margin-bottom: 25px;">
+                                <h4 data-key="video_title">🎥 ቪዲዮ - አሚር ሁሴን (ጉድ አሚናይቱ)</h4>
+                                
+                                <div class="video-container">
+                                    <div id="videoTopAd" class="video-ad-overlay-top">
+                                        <p class="video-ad-text">📢 አስ-ሱናህ ቲቪ | አዲስ መንዙማዎችን ይከታተሉ!</p>
+                                        <button class="video-ad-close" onclick="closeTopAd()">×</button>
+                                    </div>
+
+                                    <video id="mainVideo" controls controlsList="nodownload" preload="auto">
+                                        <source src="amir.mp4" type="video/mp4">
+                                    </video>
+
+                                    <div class="video-watermark-bottom">
+                                        ✨ ይህ የመንዙማ ስራ ባለቤትነቱ የሁያም ቲዩብ ነው
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="margin-bottom: 25px;">
+                                <h4 data-key="audio_title">🎧 ኦዲዮ - አሚር ሁሴን (ጉድ አሚናይቱ)</h4>
+                                <audio controls controlsList="nodownload" style="width: 100%;">
+                                    <source src="amir.mp3" type="video/mpeg">
+                                </audio>
+                            </div>
+
+                            <div class="comments-section">
+                                <h3>💬 የተመልካቾች ሀሳብ እና አስተያየት (Comments)</h3>
+                                <p style="font-size: 13px; color: #555;">ስራውን በተመለከተ ሀሳብዎን ያካፍሉ (ማስታወሻ፡ ሊንክ ፖስት ማድረግ የተከለከለ ነው)</p>
+                                
+                                <div class="comment-box-area">
+                                    <textarea id="commentInput" placeholder="ሀሳብዎን ወይም አስተያየትዎን እዚህ ይጻፉ..."></textarea>
+                                    <button class="btn-primary" onclick="postComment()" style="margin-top: 8px; width: auto; padding: 8px 20px; font-size: 13px;">አስተያየት ላክ</button>
+                                    <p id="commentError" class="error-msg"></p>
+                                </div>
+
+                                <div class="comment-list" id="commentListContainer">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="passwordSection" class="section">
+                        <h3 style="color: #0f5132;" data-key="pass_section_title">🔑 የሚስጥር ቃል (Password) መቀየሪያ</h3>
+                        <div class="form-group">
+                            <label data-key="label_old_pass">አሁን ያለዎት ፓስዋርድ፡</label>
+                            <input type="password" id="oldPassword" placeholder="የቀድሞውን ፓስዋርድ ያስገቡ">
+                        </div>
+                        <div class="form-group">
+                            <label data-key="label_new_pass">አዲስ የሚስጥር ቃል፡</label>
+                            <input type="password" id="newPassword" placeholder="አዲስ ፓስዋርድ (ቢያንስ 4 ፊደል/ቁጥር)">
+                        </div>
+                        <button class="btn-primary" onclick="changePassword()" data-key="btn_change_pass">ፓስዋርድ ቀይር</button>
+                        <p id="passMsg" class="success-msg"></p>
+                    </div>
+
+                    <div id="languageSection" class="section">
+                        <h3 style="color: #0f5132;" data-key="lang_section_title">🌐 ቋንቋ ምርጫ (Language Selection)</h3>
+                        <div class="form-group">
+                            <label data-key="lang_label">የድረ-ገጹን ቋንቋ ይምረጡ፡</label>
+                            <select id="langSelect" onchange="changeLanguage()">
+                                <option value="am">አማርኛ (Amharic)</option>
+                                <option value="ar">العربية (Arabic)</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        <p id="langMsg" class="success-msg"></p>
+                    </div>
+
+                    <div id="donateSection" class="section">
+                        <h3 style="color: #0f5132;" data-key="donate_title">🤲 አስ-ሱናህ ቲቪን በገንዘብ ይደግፉ</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: #444;" data-key="donate_desc">
+                            አስ-ሱናህ ቲቪ ሀገራዊ እና እስላማዊ እሴቶችን በማስፋፋት ላይ የሚገኝ የሚዲያ ተቋም ነው። የዚህን የዕውቀት ብርሃን ለማስቀጠል በሚችሉት አቅም ልገሳ በማድረግ አብረውን ይሁኑ።
+                        </p>
+                        <div class="payment-box">
+                            <div class="payment-info">
+                                <div class="bank-details">
+                                    <h4 data-key="donate_tele">ቴሌብር (ለድጋፍ ብቻ)</h4>
+                                    <p>0911391340</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-box">
+                            <div class="payment-info">
+                                <div class="bank-details">
+                                    <h4 data-key="donate_cbe">ንግድ ባንክ (ለድጋፍ ብቻ)</h4>
+                                    <p>1000737083911</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="huyamSection" class="section">
+                        <h3 style="color: #0f5132;" data-key="huyam_main_title">🎧 ሁያም ቲዩብ ላይ በስፋት የሚታዩ መንዙማዎች</h3>
+                        <p style="font-size: 14px; color: #555; margin-bottom: 15px;" data-key="huyam_main_desc">በሁያም ቲዩብ ቻናል ላይ በከፍተኛ ደረጃ ተወዳጅነት ያገኙትን መንዙማዎች በምስል ተመልከተው በቀጥታ መመልከት ይችላሉ፦</p>
+                        
+                        <div class="menzuma-grid">
+                            <a href="https://www.youtube.com/watch?v=PWeUof7KYiQ&list=RDPWeUof7KYiQ&start_radio=1&pp=ygUGSFVZWUFNoAcB" target="_blank" class="menzuma-card">
+                                <div class="menzuma-thumb-wrapper">
+                                    <img src="https://img.youtube.com/vi/PWeUof7KYiQ/hqdefault.jpg" alt="ዘይኔ ጀማላው" class="menzuma-thumb">
+                                    <div class="play-icon-overlay">▶</div>
+                                </div>
+                                <div class="menzuma-info">
+                                    <p class="menzuma-title">ዘይኔ ጀማላው - አዲስ የጣምራ ነሺዳ</p>
+                                    <span class="menzuma-channel">🔴 As-Sunnah Huyam</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.youtube.com/watch?v=NXk-y_6rk2c" target="_blank" class="menzuma-card">
+                                <div class="menzuma-thumb-wrapper">
+                                    <img src="https://img.youtube.com/vi/NXk-y_6rk2c/hqdefault.jpg" alt="ዳር የለው ፍቅርሁ" class="menzuma-thumb">
+                                    <div class="play-icon-overlay">▶</div>
+                                </div>
+                                <div class="menzuma-info">
+                                    <p class="menzuma-title">ዳር የለው ፍቅርሁ - አዲስ ነሺዳ</p>
+                                    <span class="menzuma-channel">🔴 As-Sunnah Huyam</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.youtube.com/watch?v=ENk7OHkH4-0" target="_blank" class="menzuma-card">
+                                <div class="menzuma-thumb-wrapper">
+                                    <img src="https://img.youtube.com/vi/ENk7OHkH4-0/hqdefault.jpg" alt="የተውሂድ አርበኛ ሐበሽዩ" class="menzuma-thumb">
+                                    <div class="play-icon-overlay">▶</div>
+                                </div>
+                                <div class="menzuma-info">
+                                    <p class="menzuma-title">የተውሂድ አርበኛ ሐበሽዩ - አዲስ ነሺዳ</p>
+                                    <span class="menzuma-channel">🔴 As-Sunnah Huyam</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <a href="https://www.youtube.com/huyam" target="_blank" class="social-btn" style="background-color: #fef3c7; color: #854d0e; font-size: 15px; padding: 15px;" data-key="huyam_channel_link">
+                                ✨ ሁሉንም የመንዙማ ስራዎች በሁያም ቲዩብ ዩቲዩብ ቻናል ለማየት እዚህ ይጫኑ
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BOT_TOKEN = "8825035473:AAHS_gni1Sm8feMiCc7hSO2fVhqQohfANBM";
+        const CHAT_ID = "651103626";
+        const ADMIN_SECRET_KEY = "admin123";
+
+        let pendingUser = null;
+        let activeGeneratedOtp = "";
+        let inactivityTimer;
+        let adIntervalTriggered = {};
+        let statusCheckInterval;
+
+        const translations = {
+            am: {
+                pageTitle: "የአስ ሱናህ ቲቪ ድረ ገጽ ነው",
+                banner_title: "የአስ ሱናህ ቲቪ ድረ ገጽ ነው",
+                banner_subtitle: "ሁያም ቲዩብ",
+                menu_media: "🎥 መንዙማ እና ይዘቶች",
+                menu_settings: "ስለ ራስ (Settings)",
+                menu_password: "🔑 ፓስዋርድ መቀየር",
+                menu_language: "🌐 ቋንቋ (Language)",
+                menu_social: "የአስ ሱናህ ቲቪ ሶሻል ሚዲያ",
+                social_youtube: "ዩቲዩብ ቻናል",
+                social_facebook: "ፌስቡክ ገጽ",
+                social_tiktok: "ቲክቶክ አካውንት",
+                social_telegram: "ቴሌግራም ቻናል",
+                menu_huyam: "🎧 ሁያም ቲዩብ መንዙማዎች",
+                menu_donate: "🤲 አስ-ሱናህን መርዳት",
+                menu_logout: "🚪 ውጣ (Logout)",
+                auth_welcome: "እንኳን ወደ አስ-ሱናህ ቲቪ በደህና መጣችሁ!",
+                auth_subtitle: "የተመረጡ መንዙማዎችን ለማግኘት እባክዎ አካውንት ይፍጠሩ ወይም ይግቡ",
+                label_id: "ስልክ ቁጥር ወይም ኢሜል፡",
+                label_pass: "የሚስጥር ቃል (Password)፡",
+                btn_login: "ግባ (Sign In)",
+                toggle_register: "አዲስ አካውንት መፍጠር ይፈልጋሉ? (Sign Up)",
+                label_telegram: "የቴሌግራም ዩዘርነምዎ (ለምሳሌ: @username)፡",
+                label_newpass: "አዲስ የሚስጥር ቃል (Password) ይፍጠሩ፡",
+                btn_send_otp: "የምዝገባ ጥያቄ ላክ (Send OTP)",
+                toggle_login: "አካውንት አለዎት? ይግቡ (Sign In)",
+                label_otp: "በቴሌግራም የተላከልዎትን የማረጋገጫ ኮድ ያስገቡ፡",
+                btn_verify: "አረጋግጥ እና አካውንት ፍጠር",
+                media_album_title: "🌟 አዲስ የመንዙማ አልበም - በአሚር ሁሴን",
+                media_album_desc: "ይህንን ኦፊሴላዊ የመንዙማ ስራ በህጋዊ መንገድ ሲገዙ <strong>አስ-ሱናህ ቲቪን</strong> እያበረታቱ ይገኛሉ።",
+                media_price: "💰 የነጠላ መንዙማው ዋጋ፡ 200 ብር ብቻ",
+                bank_name: "ስም: አስ-ሱናህ ቲቪ",
+                pay_info_title: "✈️ የክፍያ ማረጋገጫ መረጃ እና ስክሪንሹት መላኪያ",
+                label_fullname: "ሙሉ ስምዎ፡",
+                label_phone: "ስልክ ቁጥርዎ፡",
+                label_acc_holder: "የባንክ/የንግድ አካውንት ባለቤት ስም፡",
+                label_receipt: "የደረሰኝ ስክሪንሹት (Screenshot):",
+                btn_send_receipt: "ስክሪንሹት እና መረጃ ላክ",
+                unlocked_title: "🎉 እንኳን ደስ አሎት! ኮዱ በትክክል ገብቶ ይዘቱ ክፍት ሆኗል።",
+                video_title: "🎥 ቪዲዮ - አሚር ሁሴን (ጉድ አሚናይቱ)",
+                audio_title: "🎧 ኦዲዮ - አሚር ሁሴን (ጉድ አሚናይቱ)",
+                pass_section_title: "🔑 የሚስጥር ቃል (Password) መቀየሪያ",
+                label_old_pass: "አሁን ያለዎት ፓስዋርድ፡",
+                label_new_pass: "አዲስ የሚስጥር ቃል፡",
+                btn_change_pass: "ፓስዋርድ ቀይር",
+                lang_section_title: "🌐 ቋንቋ ምርጫ (Language Selection)",
+                lang_label: "የድረ-ገጹን ቋንቋ ይምረጡ፡",
+                donate_title: "🤲 አስ-ሱናህ ቲቪን በገንዘብ ይደግፉ",
+                donate_desc: "አስ-ሱናህ ቲቪ ሀገራዊ እና እስላማዊ እሴቶችን በማስፋፋት ላይ የሚገኝ የሚዲያ ተቋም ነው። የዚህን የዕውቀት ብርሃን ለማስቀጠል በሚችሉት አቅም ልገሳ በማድረግ አብረውን ይሁኑ።",
+                donate_tele: "ቴሌብር (ለድጋፍ ብቻ)",
+                donate_cbe: "ንግድ ባንክ (ለድጋፍ ብቻ)",
+                huyam_main_title: "🎧 ሁያም ቲዩብ ላይ በስፋት የሚታዩ መንዙማዎች",
+                huyam_main_desc: "በሁያም ቲዩብ ቻናል ላይ በከፍተኛ ደረጃ ተወዳጅነት ያገኙትን መንዙማዎች በምስል ተመልከተው በቀጥታ መመልከት ይችላሉ፦",
+                huyam_channel_link: "✨ ሁሉንም የመንዙማ ስራዎች በሁያም ቲዩብ ዩቲዩብ ቻናል ለማየት እዚህ ይጫኑ"
+            },
+            ar: {
+                pageTitle: "موقع قناة السُّنة الفضائية",
+                banner_title: "موقع قناة السُّنة الفضائية",
+                banner_subtitle: "هيام تيوب",
+                menu_media: "🎥 الأناشيد والمحتوى",
+                menu_settings: "الملف الشخصي (الإعدادات)",
+                menu_password: "🔑 تغيير كلمة المرور",
+                menu_language: "🌐 اللغات (Language)",
+                menu_social: "وسائل التواصل الاجتماعي لقناة السُّنة",
+                social_youtube: "قناة اليوتيوب",
+                social_facebook: "صفحة الفيسبوك",
+                social_tiktok: "حساب التيك توك",
+                social_telegram: "قناة التليجرام",
+                menu_huyam: "🎧 أناشيد هيام تيوب",
+                menu_donate: "🤲 دعم قناة السُّنة",
+                menu_logout: "🚪 تسجيل الخروج (Logout)",
+                auth_welcome: "أهلاً بك في قناة السُّنة الفضائية!",
+                auth_subtitle: "يرجى إنشاء حساب أو تسجيل الدخول للوصول إلى الأناشيد المختارة",
+                label_id: "رقم الهاتـف أو البريد الإلكتروني:",
+                label_pass: "كلمة المرور (Password):",
+                btn_login: "دخول (Sign In)",
+                toggle_register: "هل تريد إنشاء حساب جديد؟ (Sign Up)",
+                label_telegram: "معرف التليجرام الخاص بك (مثال: @username):",
+                label_newpass: "إنشاء كلمة مرور جديدة:",
+                btn_send_otp: "إرسال طلب التسجيل (Send OTP)",
+                toggle_login: "هل لديك حساب بالفعل؟ تسجيل الدخول",
+                label_otp: "أدخل رمز التحقق المرسل عبر التليجرام:",
+                btn_verify: "تأكيد وإنشاء الحساب",
+                media_album_title: "🌟 ألبوم أشود جديد - أمير حسين",
+                media_album_desc: "عند شراء هذا العمل بشكل قانوني، فإنك تدعم <strong>قناة السُّنة الفضائية</strong>.",
+                media_price: "💰 سعر النشيد الواحد: 200 بر فقط",
+                bank_name: "الاسم: قناة السُّنة الفضائية",
+                pay_info_title: "✈️ إرسال معلومات تأكيد الدفع",
+                label_fullname: "اسمك الكامل:",
+                label_phone: "رقم هاتفك:",
+                label_acc_holder: "اسم صاحب الحساب المصرفي:",
+                label_receipt: "لقطة شاشة إيصال الدفع (Screenshot):",
+                btn_send_receipt: "إرسال البيانات ولقطة الشاشة",
+                unlocked_title: "🎉 مبروك! تم إدخال الرمز بنجاح فتح المحتوى.",
+                video_title: "🎥 فيديو - أمير حسين",
+                audio_title: "🎧 صوت - أمير حسين",
+                pass_section_title: "🔑 تغيير كلمة المرور",
+                label_old_pass: "كلمة المرور الحالية:",
+                label_new_pass: "كلمة المرور الجديدة:",
+                btn_change_pass: "تغيير كلمة المرور",
+                lang_section_title: "🌐 اختيار اللغة (Language Selection)",
+                lang_label: "اختر لغة الموقع:",
+                donate_title: "🤲 ادعم قناة السُّنة الفضائية مالياً",
+                donate_desc: "قناة السُّنة الفضائية هي مؤسسة إعلامية تسعى لترسيخ القيم الوطنية والإسلامية. شاركنا في مواصلة هذا النور بالتبرع بما تستطيع.",
+                donate_tele: "تيليبر (للدعم فقط)",
+                donate_cbe: "البنك التجاري (للدعم فقط)",
+                huyam_main_title: "🎧 أبرز أناشيد هيام تيوب",
+                huyam_main_desc: "يمكنك مشاهدة الأناشيد الأكثر شعبية على قناة هيام تيوب مباشرة:",
+                huyam_channel_link: "✨ انقر هنا لمشاهدة جميع الأعمال على قناة هيام تيوب"
+            },
+            en: {
+                pageTitle: "As-Sunnah TV Official Website",
+                banner_title: "As-Sunnah TV Official Website",
+                banner_subtitle: "Huyam Tube",
+                menu_media: "🎥 Menzuma & Content",
+                menu_settings: "Profile (Settings)",
+                menu_password: "🔑 Change Password",
+                menu_language: "🌐 Language",
+                menu_social: "As-Sunnah TV Social Media",
+                social_youtube: "YouTube Channel",
+                social_facebook: "Facebook Page",
+                social_tiktok: "TikTok Account",
+                social_telegram: "Telegram Channel",
+                menu_huyam: "🎧 Huyam Tube Menzumas",
+                menu_donate: "🤲 Support As-Sunnah",
+                menu_logout: "🚪 Logout",
+                auth_welcome: "Welcome to As-Sunnah TV!",
+                auth_subtitle: "Please sign in or create an account to access selected menzumas",
+                label_id: "Phone Number or Email:",
+                label_pass: "Password:",
+                btn_login: "Sign In",
+                toggle_register: "Need an account? Sign Up",
+                label_telegram: "Your Telegram Username (e.g., @username):",
+                label_newpass: "Create New Password:",
+                btn_send_otp: "Send Registration Request (OTP)",
+                toggle_login: "Already have an account? Sign In",
+                label_otp: "Enter verification code sent via Telegram:",
+                btn_verify: "Verify & Create Account",
+                media_album_title: "🌟 New Menzuma Album - Amir Husein",
+                media_album_desc: "By purchasing this official work legally, you are supporting <strong>As-Sunnah TV</strong>.",
+                media_price: "💰 Price per Menzuma: 200 Birr Only",
+                bank_name: "Name: As-Sunnah TV",
+                pay_info_title: "✈️ Payment Confirmation Submission",
+                label_fullname: "Your Full Name:",
+                label_phone: "Phone Number:",
+                label_acc_holder: "Bank/Account Holder Name:",
+                label_receipt: "Receipt Screenshot:",
+                btn_send_receipt: "Send Info & Screenshot",
+                unlocked_title: "🎉 Congratulations! Code verified successfully.",
+                video_title: "🎥 Video - Amir Husein",
+                audio_title: "🎧 Audio - Amir Husein",
+                pass_section_title: "🔑 Change Password",
+                label_old_pass: "Current Password:",
+                label_new_pass: "New Password:",
+                btn_change_pass: "Change Password",
+                lang_section_title: "🌐 Language Selection",
+                lang_label: "Select website language:",
+                donate_title: "Support As-Sunnah TV Financially",
+                donate_desc: "As-Sunnah TV is a media institution promoting national and Islamic values. Help keep this light shining by making a donation.",
+                donate_tele: "Telebirr (For Donations Only)",
+                donate_cbe: "Commercial Bank (For Donations Only)",
+                huyam_main_title: "🎧 Popular Menzumas on Huyam Tube",
+                huyam_main_desc: "Watch the most popular menzumas directly on Huyam Tube channel:",
+                huyam_channel_link: "✨ Click here to view all Menzumas on Huyam Tube YouTube Channel"
+            }
+        };
+
+        window.onload = function() {
+            let savedLang = localStorage.getItem("asunnah_lang") || "am";
+            document.getElementById("langSelect").value = savedLang;
+            applyLanguage(savedLang);
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                toggleAuthMode('adminLogin');
+            }
+
+            let isRefreshed = sessionStorage.getItem("asunnah_session_active");
+            if (!isRefreshed) {
+                localStorage.removeItem("asunnah_active_user");
+                if (urlParams.get('admin') !== 'true') {
+                    document.getElementById("authSection").style.display = "block";
+                }
+                document.getElementById("topNavBar").style.display = "none";
+            } else {
+                let activeUser = localStorage.getItem("asunnah_active_user");
+                if (activeUser) {
+                    showDashboard(activeUser);
+                    startInactivityTimer();
+                } else {
+                    if (urlParams.get('admin') !== 'true') {
+                        document.getElementById("authSection").style.display = "block";
+                    }
+                    document.getElementById("topNavBar").style.display = "none";
+                }
+            }
+
+            setupVideoAdTimer();
+        };
+
+        function setupVideoAdTimer() {
+            const videoElem = document.getElementById("mainVideo");
+            if (!videoElem) return;
+
+            videoElem.ontimeupdate = function() {
+                let currentTime = Math.floor(videoElem.currentTime);
+                if (currentTime > 0 && currentTime % 240 === 0) {
+                    if (!adIntervalTriggered[currentTime]) {
+                        showTopAd();
+                        adIntervalTriggered[currentTime] = true;
+                    }
+                }
+            };
+        }
+
+        function showTopAd() {
+            let adBanner = document.getElementById("videoTopAd");
+            if (adBanner) {
+                adBanner.style.display = "flex";
+                setTimeout(() => {
+                    closeTopAd();
+                }, 10000);
+            }
+        }
+
+        function closeTopAd() {
+            let adBanner = document.getElementById("videoTopAd");
+            if (adBanner) {
+                adBanner.style.display = "none";
+            }
+        }
+
+        function changeLanguage() {
+            let lang = document.getElementById("langSelect").value;
+            localStorage.setItem("asunnah_lang", lang);
+            applyLanguage(lang);
+            
+            let langMsg = document.getElementById("langMsg");
+            langMsg.style.color = "#27ae60";
+            langMsg.textContent = "✅ ቋንቋው ተቀይሯል!";
+        }
+
+        function applyLanguage(lang) {
+            let t = translations[lang];
+            if (!t) return;
+
+            document.getElementById("htmlRoot").setAttribute("lang", lang);
+            document.getElementById("htmlRoot").setAttribute("dir", lang === 'ar' ? "rtl" : "ltr");
+            document.getElementById("pageTitle").textContent = t.pageTitle;
+
+            let elements = document.querySelectorAll("[data-key]");
+            elements.forEach(el => {
+                let key = el.getAttribute("data-key");
+                if (t[key]) el.innerHTML = t[key];
+            });
+        }
+
+        function toggleMenuDropdown() {
+            let menu = document.getElementById("dropdownMenu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-toggle-btn')) {
+                let dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    let openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === "block") openDropdown.style.display = "none";
+                }
+            }
+        }
+
+        function switchTab(sectionId) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.style.display = 'none');
+
+            document.getElementById(sectionId).style.display = 'block';
+            resetTimer();
+        }
+
+        function startInactivityTimer() {
+            resetTimer();
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer;
+            window.onclick = resetTimer;
+            window.onkeypress = resetTimer;
+            window.onscroll = resetTimer;
+        }
+
+        function resetTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                alert("⏱️ የቆይታ ጊዜዎ ስለተጠናቀቀ ከባለቤቱ አካውንት ወጥተዋል!");
+                handleLogout();
+            }, 300000);
+        }
+
+        function toggleAuthMode(mode) {
+            document.getElementById("authError").textContent = "";
+            document.getElementById("regError").textContent = "";
+            document.getElementById("verifyError").textContent = "";
+            document.getElementById("adminAuthError").textContent = "";
+            document.getElementById("forgotError").textContent = "";
+
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "none";
+            document.getElementById("verifyForm").style.display = "none";
+            document.getElementById("adminLoginForm").style.display = "none";
+            document.getElementById("forgotForm").style.display = "none";
+
+            if (mode === 'register') {
+                document.getElementById("registerForm").style.display = "block";
+            } else if (mode === 'login') {
+                document.getElementById("loginForm").style.display = "block";
+            } else if (mode === 'verify') {
+                document.getElementById("verifyForm").style.display = "block";
+            } else if (mode === 'adminLogin') {
+                document.getElementById("adminLoginForm").style.display = "block";
+            } else if (mode === 'forgot') {
+                document.getElementById("forgotForm").style.display = "block";
+            }
+        }
+
+        function handleAdminLogin() {
+            let secret = document.getElementById("adminSecretInput").value.trim();
+            let err = document.getElementById("adminAuthError");
+
+            if (secret === ADMIN_SECRET_KEY) {
+                localStorage.setItem("asunnah_active_user", "ADMIN_MASTER");
+                sessionStorage.setItem("asunnah_session_active", "true");
+                showDashboard("ADMIN_MASTER");
+            } else {
+                err.textContent = "❌ የተሳሳተ የአድሚን ሚስጥር ቃል!";
+            }
+        }
+
+        // 🌟 አዲስ የፎርጌት ፓስዋርድ ጥያቄ ሎጂክ
+        async function handleForgotPasswordRequest() {
+            let id = document.getElementById("forgotIdentifier").value.trim();
+            let err = document.getElementById("forgotError");
+
+            if (!id) {
+                err.textContent = "❌ እባክዎ የተመዘገቡበትን ስልክ ወይም ኢሜል ያስገቡ!";
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("asunnah_users") || "{}");
+            let userObj = users[id];
+
+            if (!userObj) {
+                err.textContent = "❌ ይህ ስልክ/ኢሜል በሲስተሙ ውስጥ አልተገኘም!";
+                return;
+            }
+
+            // ጊዜያዊ አዲስ ፓስዋርድ ማመንጨት (Temporary Password)
+            let tempPass = "TEMP-" + Math.floor(1000 + Math.random() * 9000);
+
+            if (typeof userObj === 'object') {
+                userObj.pass = tempPass;
+                userObj.mustChangePass = true; // የመጀመሪያ ስራው ፓስዋርድ መቀየር መሆኑን የሚያሳይ ማርክ
+            } else {
+                users[id] = { pass: tempPass, telegram: "", date: "", mustChangePass: true };
+            }
+            localStorage.setItem("asunnah_users", JSON.stringify(users));
+
+            // መረጃውን ለአድሚን ቦት መላክ
+            let adminMsg = `🔑 *የፓስዋርድ ማግኛ ጥያቄ (Forgot Password)*\n\n` +
+                           `👤 *ተጠቃሚ:* ${id}\n` +
+                           `🔐 *የተፈጠረው ጊዜያዊ ፓስዋርድ:* \`${tempPass}\`\n\n` +
+                           `📌 እባክዎ ይህንን ጊዜያዊ ፓስዋርድ ለተጠቃሚው ያድርሱት። ሲገባ ወዲያውኑ እንዲቀይረው ይጠየቃል።`;
+
+            let formData = new FormData();
+            formData.append("chat_id", CHAT_ID);
+            formData.append("text", adminMsg);
+            formData.append("parse_mode", "Markdown");
+
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, { method: "POST", body: formData });
+            } catch (e) { console.log(e); }
+
+            alert("✅ ጥያቄዎ ለአድሚን ቦት ተልኳል! አድሚኑ ጊዜያዊ ፓስዋርዱን ይልክልዎታል።");
+            toggleAuthMode('login');
+        }
+
+        async function handleRegisterRequest() {
+            let id = document.getElementById("regIdentifier").value.trim();
+            let telegramUser = document.getElementById("regTelegram").value.trim();
+            let pass = document.getElementById("regPassword").value.trim();
+            let regError = document.getElementById("regError");
+            let regBtn = document.getElementById("regBtn");
+
+            if (!id || !telegramUser || !pass) {
+                regError.textContent = "❌ እባክዎ ሁሉንም መረጃዎች ይሙሉ!";
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("asunnah_users") || "{}");
+            if (users[id]) {
+                regError.textContent = "❌ ይህ ስልክ/ኢሜል ቀደም ሲል ተመዝግቧል!";
+                return;
+            }
+
+            regBtn.disabled = true;
+            regBtn.innerText = "ጥያቄው እየተላከ ነው...";
+
+            activeGeneratedOtp = Math.floor(1000 + Math.random() * 9000).toString();
+            pendingUser = { id: id, pass: pass, telegram: telegramUser, date: new Date().toLocaleString(), mustChangePass: false };
+
+            let captionText = `🔐 *አዲስ የአካውንት ምዝገባ ጥያቄ (OTP)*\n\n` +
+                              `👤 *የተጠቃሚው አድራሻ:* ${id}\n` +
+                              `✈️ *የቴሌግራም ዩዘርነም:* ${telegramUser}\n` +
+                              `🔑 *የማረጋገጫ ኮድ:* \`${activeGeneratedOtp}\``;
+
+            let formData = new FormData();
+            formData.append("chat_id", CHAT_ID);
+            formData.append("text", captionText);
+            formData.append("parse_mode", "Markdown");
+
+            try {
+                let response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, { method: "POST", body: formData });
+                let result = await response.json();
+                if (result.ok) {
+                    alert("✅ የምዝገባ ጥያቄዎ በትክክል ተልኳል! ኮዱን በቴሌግራም ይጠብቁ።");
+                    toggleAuthMode('verify');
+                } else { throw new Error(); }
+            } catch (error) {
+                regError.textContent = "❌ ግንኙነት ላይ ስህተት ተከስቷል!";
+            } finally {
+                regBtn.disabled = false;
+                regBtn.innerText = "የምዝገባ ጥያቄ ላክ (Send OTP)";
+            }
+        }
+
+        function handleVerifyOtp() {
+            let enteredOtp = document.getElementById("otpCodeInput").value.trim();
+            let verifyError = document.getElementById("verifyError");
+
+            if (enteredOtp === activeGeneratedOtp) {
+                let users = JSON.parse(localStorage.getItem("asunnah_users") || "{}");
+                users[pendingUser.id] = { pass: pendingUser.pass, telegram: pendingUser.telegram, date: pendingUser.date, mustChangePass: false };
+                localStorage.setItem("asunnah_users", JSON.stringify(users));
+
+                let allUserDetails = JSON.parse(localStorage.getItem("asunnah_all_profiles") || "[]");
+                allUserDetails.push({ id: pendingUser.id, telegram: pendingUser.telegram, date: pendingUser.date, status: "pending" });
+                localStorage.setItem("asunnah_all_profiles", JSON.stringify(allUserDetails));
+
+                localStorage.setItem("asunnah_active_user", pendingUser.id);
+                sessionStorage.setItem("asunnah_session_active", "true");
+
+                showDashboard(pendingUser.id);
+                startInactivityTimer();
+            } else {
+                verifyError.textContent = "❌ ያስገቡት የማረጋገጫ ኮድ ትክክል አይደለም!";
+            }
+        }
+
+        function handleLogin() {
+            let id = document.getElementById("userIdentifier").value.trim();
+            let pass = document.getElementById("userPassword").value.trim();
+            let authError = document.getElementById("authError");
+
+            if (!id || !pass) {
+                authError.textContent = "❌ እባክዎ ስልክ/ኢሜል እና ፓስዋርድ ያስገቡ!";
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("asunnah_users") || "{}");
+            let userObj = users[id];
+            let isValid = false;
+
+            if (!userObj) {
+                authError.textContent = "❌ ይህ አካውንት በሲስተሙ ውስጥ አልተገኘም ወይም ተሰርዟል!";
+                return;
+            }
+
+            let storedPass = (typeof userObj === 'object') ? userObj.pass : userObj;
+            let mustChange = (typeof userObj === 'object') ? userObj.mustChangePass : false;
+
+            if (storedPass === pass) isValid = true;
+
+            if (isValid) {
+                localStorage.setItem("asunnah_active_user", id);
+                sessionStorage.setItem("asunnah_session_active", "true");
+                showDashboard(id);
+                startInactivityTimer();
+
+                // 🌟 ጊዜያዊ ፓስዋርድ ከሆነ ወዲያውኑ ፓስዋርድ መቀየሪያ ታብ እንዲከፍት ማስገደድ
+                if (mustChange) {
+                    alert("⚠️ ማስታወሻ፡ በአድሚን የተላከልዎ ጊዜያዊ ፓስዋርድ ስለሆነ፣ የመጀመሪያ ስራዎ አሁን አዲስ ፓስዋርድ መቀየር መሆን አለበት!");
+                    switchTab('passwordSection');
+                }
+            } else {
+                authError.textContent = "❌ ያስገቡት ስልክ/ኢሜል ወይም ፓስዋርድ የተሳሳተ ነው!";
+            }
+        }
+
+        function showDashboard(user) {
+            document.getElementById("authSection").style.display = "none";
+            document.getElementById("mainDashboard").style.display = "block";
+            document.getElementById("topNavBar").style.display = "flex";
+
+            if (user === "ADMIN_MASTER") {
+                document.getElementById("userGreeting").textContent = `🛡️ አድሚን (Admin Panel)`;
+                document.getElementById("adminMenuLink").style.display = "block";
+                loadAdminData();
+                switchTab('adminPanelSection');
+            } else {
+                document.getElementById("userGreeting").textContent = `👤 ተጠቃሚ: ${user}`;
+                document.getElementById("adminMenuLink").style.display = "none";
+
+                checkUserAccessStatus(user);
+                startStatusPolling(user);
+
+                let users = JSON.parse(localStorage.getItem("asunnah_users") || "{}");
+                let userObj = users[user];
+                let mustChange = (typeof userObj === 'object') ? userObj.mustChangePass : false;
+
+                if (!mustChange) {
+                    switchTab('mediaSection');
+                }
+                if (/^\d+$/.test(user)) document.getElementById("phoneNumber").value = user;
+            }
+        }
+
+        function startStatusPolling(user) {
+            if (statusCheckInterval) clearInterval(statusCheckInterval);
+            statusCheckInterval = setInterval(() => {
+                let unlockedUsers = JSON.parse(localStorage.getItem("asunnah_unlocked_users") || "[]");
+                let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+
+                if (unlockedUsers.includes(user)) {
+                    document.getElementById("submissionBox").style.display = "none";
+                    document.getElementById("activationCodeBox").style.display = "none";
+                    document.getElementById("unlockedMediaContent").style.display = "block";
+                    setupVideoAdTimer();
+                    loadComments();
+                    recordUserView(user);
+                } else if (userSubmissions[user] && userSubmissions[user].status === "approved") {
+                    document.getElementById("submissionBox").style.display = "none";
+                    let activationBox = document.getElementById("activationCodeBox");
+                    activationBox.style.display = "block";
+                    document.getElementById("userDisplayCode").textContent = userSubmissions[user].code;
+                }
+            }, 2000);
+        }
+
+        function checkUserAccessStatus(user) {
+            let unlockedUsers = JSON.parse(localStorage.getItem("asunnah_unlocked_users") || "[]");
+            let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+
+            if (unlockedUsers.includes(user)) {
+                document.getElementById("submissionBox").style.display = "none";
+                document.getElementById("activationCodeBox").style.display = "none";
+                document.getElementById("unlockedMediaContent").style.display = "block";
+                setupVideoAdTimer();
+                loadComments();
+                recordUserView(user);
+            } else if (userSubmissions[user] && userSubmissions[user].status === "approved") {
+                document.getElementById("submissionBox").style.display = "none";
+                document.getElementById("activationCodeBox").style.display = "block";
+                document.getElementById("userDisplayCode").textContent = userSubmissions[user].code;
+            } else {
+                document.getElementById("submissionBox").style.display = "block";
+                document.getElementById("activationCodeBox").style.display = "none";
+                document.getElementById("unlockedMediaContent").style.display = "none";
+                
+                let msg = document.getElementById("submitMsg");
+                if (userSubmissions[user] && userSubmissions[user].status === "pending") {
+                    msg.style.color = "#d97706";
+                    msg.textContent = "⏳ ስክሪንሹቱ ተልኳል! ክፍያዎ እስኪረጋገጥ ድረስ በትዕግስት ይጠብቁን። አድሚኑ ሲያረጋግጠው ኮዱ በቴሌግራም ቦት እና እዚህ ገጽ ላይ በቅጽበት ይወጣል።";
+                }
+            }
+        }
+
+        function recordUserView(user) {
+            let userViews = JSON.parse(localStorage.getItem("asunnah_user_views") || "{}");
+            let lastViewTimeKey = "last_view_" + user;
+            let now = Date.now();
+            let lastTime = sessionStorage.getItem(lastViewTimeKey) || 0;
+
+            if (now - lastTime > 30000) {
+                userViews[user] = (userViews[user] || 0) + 1;
+                localStorage.setItem("asunnah_user_views", JSON.stringify(userViews));
+                sessionStorage.setItem(lastViewTimeKey, now);
+            }
+        }
+
+        function verifyVipCode() {
+            let enteredVipCode = document.getElementById("vipCodeInput").value.trim().toUpperCase();
+            let errElem = document.getElementById("vipError");
+            let activeUser = localStorage.getItem("asunnah_active_user");
+            
+            let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+            let subData = userSubmissions[activeUser];
+            let correctVipCode = "";
+
+            if (subData && subData.vipCode) {
+                correctVipCode = subData.vipCode.trim().toUpperCase();
+            } else {
+                for (let key in userSubmissions) {
+                    if (userSubmissions[key] && userSubmissions[key].vipCode) {
+                        correctVipCode = userSubmissions[key].vipCode.trim().toUpperCase();
+                        break;
+                    }
+                }
+            }
+
+            if (!enteredVipCode) {
+                errElem.textContent = "❌ እባክዎ የቪአይፒ ኮድዎን ያስገቡ!";
+                return;
+            }
+
+            if (enteredVipCode === correctVipCode) {
+                let unlockedUsers = JSON.parse(localStorage.getItem("asunnah_unlocked_users") || "[]");
+                if (!unlockedUsers.includes(activeUser)) {
+                    unlockedUsers.push(activeUser);
+                    localStorage.setItem("asunnah_unlocked_users", JSON.stringify(unlockedUsers));
+                }
+                errElem.textContent = "";
+                alert("✅ የቪአይፒ ኮድዎ በትክክል ተረጋግጧል! ይዘቱ አሁን በክብር ተከፍቷል።");
+                location.reload();
+            } else {
+                errElem.textContent = "❌ ያስገቡት የቪአይፒ ኮድ ትክክል አይደለም!";
+            }
+        }
+
+        function verifyActivationCode() {
+            let enteredCode = document.getElementById("activationCodeInput").value.trim().toUpperCase();
+            let errElem = document.getElementById("activationError");
+            let activeUser = localStorage.getItem("asunnah_active_user");
+            
+            let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+            let subData = userSubmissions[activeUser];
+            let correctCode = "";
+            
+            if (subData && subData.code) {
+                correctCode = subData.code.trim().toUpperCase();
+            } else {
+                for (let key in userSubmissions) {
+                    if (userSubmissions[key] && userSubmissions[key].code) {
+                        correctCode = userSubmissions[key].code.trim().toUpperCase();
+                        break;
+                    }
+                }
+            }
+
+            if (!enteredCode) {
+                errElem.textContent = "❌ እባክዎ በገጹ ላይ የወጣልዎትን ኮድ ያስገቡ!";
+                return;
+            }
+
+            if (enteredCode === correctCode) {
+                let unlockedUsers = JSON.parse(localStorage.getItem("asunnah_unlocked_users") || "[]");
+                if (!unlockedUsers.includes(activeUser)) {
+                    unlockedUsers.push(activeUser);
+                    localStorage.setItem("asunnah_unlocked_users", JSON.stringify(unlockedUsers));
+                }
+                errElem.textContent = "";
+                alert("✅ ኮዱ በትክክል ገብቷል! ይዘቱ አሁን ክፍት ሆኗል።");
+                location.reload();
+            } else {
+                errElem.textContent = `❌ ያስገቡት ኮድ ትክክል አይደለም!`;
+            }
+        }
+
+        function openAdminPanel() {
+            loadAdminData();
+            switchTab('adminPanelSection');
+        }
+
+        function loadAdminData() {
+            let allProfiles = JSON.parse(localStorage.getItem("asunnah_all_profiles") || "[]");
+            let unlockedUsers = JSON.parse(localStorage.getItem("asunnah_unlocked_users") || "[]");
+            let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+            let userViews = JSON.parse(localStorage.getItem("asunnah_user_views") || "{}");
+
+            document.getElementById("totalUsersCount").textContent = allProfiles.length;
+            document.getElementById("paidUsersCount").textContent = unlockedUsers.length;
+            document.getElementById("unpaidUsersCount").textContent = Math.max(0, allProfiles.length - unlockedUsers.length);
+
+            let tableBody = document.getElementById("adminUsersTableBody");
+            tableBody.innerHTML = "";
+
+            if (allProfiles.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#777;">ምንም የተመዘገበ ተጠቃሚ የለም።</td></tr>`;
+            } else {
+                allProfiles.forEach((p, index) => {
+                    let isPaid = unlockedUsers.includes(p.id);
+                    let subInfo = userSubmissions[p.id];
+                    let viewCount = userViews[p.id] || 0;
+                    
+                    let badgeHtml = isPaid ? `<span class="badge-paid">✅ ቪአይፒ/ይዘቱ ተከፍቷል</span>` : 
+                                    (subInfo && subInfo.status === "vip_granted" ? `<span class="badge-paid" style="background:#fef3c7; color:#854d0e;">⭐ ቪአይፒ ኮድ ተልኳል</span>` :
+                                    (subInfo && subInfo.status === "approved" ? `<span class="badge-paid" style="background:#e0f2fe; color:#0369a1;">⏳ ኮድ ወጥቷል</span>` :
+                                    (subInfo && subInfo.status === "pending" ? `<span class="badge-unpaid" style="background:#fef3c7; color:#854d0e;">⏳ ስክሪንሹት ልኳል</span>` : `<span class="badge-unpaid">⏳ አዲስ ተጠቃሚ</span>`)));
+                    
+                    let actionBtn = "";
+                    if (isPaid) {
+                        actionBtn = `<button class="btn-revoke" onclick="revokeUserAccess('${p.id}')" style="margin-bottom:3px;">🚫 መዳረሻ ዝጋ</button><br>` +
+                                    `<button class="btn-delete-user" onclick="deleteUserAccount('${p.id}')">🗑️ አካውንቱን አስወጣ</button>`;
+                    } else if (subInfo && subInfo.status === "vip_granted") {
+                        let vCode = subInfo.vipCode;
+                        actionBtn = `<span style="color:#d97706; font-weight:bold; font-size:11px;">ኮድ: ${vCode}</span><br>` +
+                                    `<button class="btn-revoke" onclick="revokeUserAccess('${p.id}')" style="margin-bottom:3px;">🚫 መዳረሻ ዝጋ</button><br>` +
+                                    `<button class="btn-delete-user" onclick="deleteUserAccount('${p.id}')">🗑️ አካውንቱን አስወጣ</button>`;
+                    } else {
+                        actionBtn = `<button class="btn-approve" onclick="approveUserPayment('${p.id}', '${p.telegram}')">✅ አፕሩヴ (ኮድ ላክ)</button><br>` +
+                                    `<button class="btn-vip-gen" onclick="generateAndSendVipCode('${p.id}', '${p.telegram}')">🎁 ቪአይፒ ኮድ ላክ</button><br>` +
+                                    `<button class="btn-delete-user" onclick="deleteUserAccount('${p.id}')">🗑️ አካውንቱን አስወጣ</button>`;
+                    }
+                    
+                    let row = `<tr>
+                        <td>${index + 1}</td>
+                        <td><b>${p.id}</b></td>
+                        <td>${p.telegram || 'አልገባም'}</td>
+                        <td><span class="badge-views">👁️ ${viewCount} ጊዜ</span></td>
+                        <td>${badgeHtml}</td>
+                        <td>${actionBtn}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            }
+
+            loadAdminCommentsControl();
+        }
+
+        async function sendTelegramMessage(chatTarget, messageText) {
+            if (!chatTarget || chatTarget === 'አልገባም') return;
+            let targetId = chatTarget.startsWith('@') ? chatTarget : CHAT_ID; 
+
+            let formData = new FormData();
+            formData.append("chat_id", targetId);
+            formData.append("text", messageText);
+            formData.append("parse_mode", "Markdown");
+
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, { method: "POST", body: formData });
+            } catch (e) { console.log(e); }
+        }
+
+        async function approveUserPayment(userId, teleUser) {
+            if (confirm(`እርግጠኛ ኖት የዚህን ተጠቃሚ (${userId}) ክፍያ አረጋግጠው ኮድ ማመንጨት እና በቴሌግራም መላክ ይፈልጋሉ?`)) {
+                let autoCode = "AS-" + Math.floor(100000 + Math.random() * 900000);
+
+                let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+                if (userSubmissions[userId]) {
+                    userSubmissions[userId].status = "approved";
+                    userSubmissions[userId].code = autoCode;
+                }
+                localStorage.setItem("asunnah_submissions", JSON.stringify(userSubmissions));
+
+                let adminMsg = `✅ *የክፍያ ማረጋገጫ እና መክፈቻ ኮድ (Approved)*\n\n` +
+                               `👤 *ተጠቃሚ:* ${userId}\n` +
+                               `✈️ *ቴሌግራም:* ${teleUser}\n` +
+                               `🔑 *ኮድ:* \`${autoCode}\``;
+                await sendTelegramMessage(CHAT_ID, adminMsg);
+
+                let userMsg = `🎉 *የአስ-ሱናህ ቲቪ የክፍያ ማረጋገጫ*\n\n` +
+                              `ሰላም ${userId}፣ ክፍያዎ በአድሚን ጸድቋል!\n\n` +
+                              `የተሰጠዎት ልዩ መክፈቻ ኮድ፡ \`${autoCode}\`\n\n` +
+                              `ይህንን ኮድ በመጠቀም ድረ-ገጻችን ላይ ይዘቱን በሰላም መመልከት ይችላሉ። иመሰግናለን!`;
+                await sendTelegramMessage(teleUser, userMsg);
+
+                alert(`✅ ክፍያው ጸድቋል! ኮዱ (${autoCode}) በቴሌግራም እና በድረ-ገጹ ላይ ተልኳል።`);
+                loadAdminData();
+            }
+        }
+
+        async function generateAndSendVipCode(userId, teleUser) {
+            if (confirm(`እርግጠኛ ኖት ለዚህ ተጠቃሚ (${userId}) የቪአይፒ ኮድ በቴሌግራም መላክ ይፈልጋሉ?`)) {
+                let autoVipCode = "VIP-" + Math.floor(100000 + Math.random() * 900000);
+
+                let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+                userSubmissions[userId] = { 
+                    name: "VIP User", 
+                    phone: userId, 
+                    status: "vip_granted", 
+                    code: "", 
+                    vipCode: autoVipCode 
+                };
+                localStorage.setItem("asunnah_submissions", JSON.stringify(userSubmissions));
+
+                let adminMsg = `🌟 *የቪአይፒ ኮድ ተልኳል*\n\n👤 *ተጠቃሚ:* ${userId}\n✈️ *ቴሌግራም:* ${teleUser}\n🔑 *ቪአይፒ ኮድ:* \`${autoVipCode}\``;
+                await sendTelegramMessage(CHAT_ID, adminMsg);
+
+                let userMsg = `🌟 *የአስ-ሱናህ ቲቪ የክብር ቪአይፒ መዳረሻ*\n\n` +
+                              `ሰላም ${userId}። አስ-ሱናህ ቲቪን ላደረጉት ድጋፍ እና አክብሮት እናመሰግናለን!\n\n` +
+                              `የእርስዎ ልዩ ቪአይፒ ኮድ፡ \`${autoVipCode}\`\n\n` +
+                              `ይህንን ኮድ በድረ-ገጻችን ላይ ባለው የቪአይፒ ሳጥን ውስጥ በማስገባት ይዘቱን በቀላሉ መክፈት ይችላሉ።`;
+                await sendTelegramMessage(teleUser, userMsg);
+
+                alert(`✅ የቪአይፒ ኮድ (${autoVipCode}) በተሳካ ሁኔታ ተፈጥሮ በቴሌግራም እና በድረ-ገጹ ላይ ተልኳል!`);
+                loadAdminData();
+            }
+        }
+
+        function deleteUserAccount(userId) {
+            if (confirm(`⚠️ ማስጠንቀቂያ፡ እርግጠኛ ኖት የዚህን ተጠቃሚ (${userId}) አካውንት ከነጭራሹ ከሲስተሙ ማስወጣት (ማጥፋት) ይፈልጋሉ?`)) {
+                let users = JSON.parse(localStorage.getItem("asunnah_users") || "{}");
+                delete users[userId];
+                localStorage.setItem("asunnah_users", JSON.stringify(users));
+
+                let allProfiles = JSON.parse(localStorage.getItem("asunnah_all_profiles") || "[]");
+                allProfiles = allProfiles.filter(p => p.id !== userId);
+                localStorage.setItem("asunnah_all_profiles", JSON.stringify(allProfiles));
+
+                let unlockedUsers = JSON.parse(localStorage.getItem("asunnah_unlocked_users") || "[]");
+                unlockedUsers = unlockedUsers.filter(id => id !== userId);
+                localStorage.setItem("asunnah_unlocked_users", JSON.stringify(unlockedUsers));
+
+                let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+                delete userSubmissions[userId];
+                localStorage.setItem("asunnah_submissions", JSON.stringify(userSubmissions));
+
+                let userViews = JSON.parse(localStorage.getItem("asunnah_user_views") || "{}");
+                delete userViews[userId];
+                localStorage.setItem("asunnah_user_views", JSON.stringify(userViews));
+
+                alert(`✅ የተጠቃሚው (${userId}) አካውንት ከነጭራሹ ከሲስተሙ ተወግዷል!`);
+                loadAdminData();
+            }
+        }
+
+        function revokeUserAccess(userId) {
+            if (confirm(`እርግጠኛ ኖት የዚህን ተጠቃሚ (${userId}) መዳረሻ ማቋረጥ (መዝጋት) ይፈልጋሉ?`)) {
+                let unlockedUsers = JSON.parse(localStorage.getItem("asunnah_unlocked_users") || "[]");
+                let index = unlockedUsers.indexOf(userId);
+                if (index !== -1) {
+                    unlockedUsers.splice(index, 1);
+                    localStorage.setItem("asunnah_unlocked_users", JSON.stringify(unlockedUsers));
+
+                    let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+                    if (userSubmissions[userId]) userSubmissions[userId].status = "revoked";
+                    localStorage.setItem("asunnah_submissions", JSON.stringify(userSubmissions));
+
+                    alert(`✅ የተጠቃሚው (${userId}) መዳረሻ ተቋርጧል!`);
+                    loadAdminData();
+                }
+            }
+        }
+
+        async function submitReceiptToAdmin() {
+            let name = document.getElementById("fullName").value.trim();
+            let phone = document.getElementById("phoneNumber").value.trim();
+            let holder = document.getElementById("accountHolder").value.trim();
+            let fileInput = document.getElementById("receiptImage");
+            let msg = document.getElementById("submitMsg");
+            let sendBtn = document.getElementById("sendBtn");
+            let activeUser = localStorage.getItem("asunnah_active_user");
+
+            if(name === "" || phone === "" || holder === "" || fileInput.files.length === 0) {
+                alert("እባክዎ ሁሉንም መረጃዎች ይሙሉ እና የደረሰኝ ስክሪንሹት ይምረጡ!");
+                return;
+            }
+
+            sendBtn.disabled = true;
+            sendBtn.innerText = "መረጃው እየተላከ ነው...";
+
+            let file = fileInput.files[0];
+            let captionText = `📌 *አዲስ የክፍያ ስክሪንሹት (ለአድሚን ማረጋገጫ)*\n\n` +
+                              `👤 *የተጠቃሚው መግቢያ (ID):* ${activeUser}\n` +
+                              `👤 *ስም:* ${name}\n` +
+                              `📞 *ስልክ ቁጥር:* ${phone}\n` +
+                              `💳 *የከፈለበት ስም:* ${holder}\n\n` +
+                              `⚠️ እባክዎ ወደ አድሚን ዳሽቦርድ በመግባት <b>Approve</b> የሚለውን ይጫኑ!`;
+
+            let formData = new FormData();
+            formData.append("chat_id", CHAT_ID);
+            formData.append("photo", file);
+            formData.append("caption", captionText);
+            formData.append("parse_mode", "Markdown");
+
+            try {
+                let response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: "POST", body: formData });
+                let result = await response.json();
+                if (result.ok) {
+                    let userSubmissions = JSON.parse(localStorage.getItem("asunnah_submissions") || "{}");
+                    userSubmissions[activeUser] = { name: name, phone: phone, status: "pending", code: "" };
+                    localStorage.setItem("asunnah_submissions", JSON.stringify(userSubmissions));
+
+                    msg.style.color = "#d97706";
+                    msg.textContent = "⏳ ስክሪንሹቱ ተልኳል! ክፍያዎ እስኪረጋገጥ ድረስ በትዕግስት ይጠብቁን። አድሚኑ ሲያረጋግጠው ኮዱ በቴሌግራም እና እዚህ ገጽ ላይ በቅጽበት ይወጣል።";
+                    
+                    document.getElementById("fullName").value = "";
+                    document.getElementById("accountHolder").value = "";
+                    fileInput.value = "";
+                } else { throw new Error(); }
+            } catch (error) {
+                msg.style.color = "#e53e3e";
+                msg.textContent = "❌ ስህተት ተከስቷል! እባክዎ እንደገና ይሞክሩ።";
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.innerText = "ስክሪንሹት እና መረጃ ላክ";
+            }
+        }
+
+        function postComment() {
+            let text = document.getElementById("commentInput").value.trim();
+            let err = document.getElementById("commentError");
+            let activeUser = localStorage.getItem("asunnah_active_user");
+
+            if (!text) {
+                err.textContent = "❌ እባክዎ ሀሳብዎን ይጻፉ!";
+                return;
+            }
+
+            let linkPattern = /(http:\/\/|https:\/\/|www\.|\.com|\.net|\.org|t\.me|bit\.ly)/i;
+            if (linkPattern.test(text)) {
+                err.textContent = "⚠️ ማስታወሻ፡ በዚህ መድረክ ላይ ሊንክ (Link) ፖስት ማድረግ የተከለከለ ነው!";
+                return;
+            }
+
+            err.textContent = "";
+
+            let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+            let newComment = {
+                id: Date.now(),
+                user: activeUser,
+                text: text,
+                date: new Date().toLocaleString(),
+                likes: 0,
+                likedBy: [],
+                replies: []
+            };
+
+            comments.unshift(newComment);
+            localStorage.setItem("asunnah_comments", JSON.stringify(comments));
+
+            document.getElementById("commentInput").value = "";
+            loadComments();
+        }
+
+        function loadComments() {
+            let container = document.getElementById("commentListContainer");
+            if (!container) return;
+
+            let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+            let activeUser = localStorage.getItem("asunnah_active_user");
+
+            container.innerHTML = "";
+
+            if (comments.length === 0) {
+                container.innerHTML = `<p style="color: #777; font-size: 13px; text-align: center;">እስካሁን የተሰጠ አስተያየት የለም። የመጀመሪያውን ሀሳብ እርስዎ ይስጡ!</p>`;
+                return;
+            }
+
+            comments.forEach(c => {
+                let hasLiked = c.likedBy && c.likedBy.includes(activeUser);
+                let likeBtnColor = hasLiked ? "color: #198754; font-weight: bold; border-color: #198754;" : "";
+                
+                let deleteBtnHtml = (activeUser === "ADMIN_MASTER" || activeUser === c.user)
+                    ? `<button class="btn-delete-comment" onclick="deleteComment(${c.id})">🗑️ አጥፋ</button>`
+                    : "";
+
+                let repliesHtml = "";
+                if (c.replies && c.replies.length > 0) {
+                    c.replies.forEach(r => {
+                        let rDeleteBtn = (activeUser === "ADMIN_MASTER" || activeUser === r.user)
+                            ? `<button class="btn-delete-comment" onclick="deleteReply(${c.id}, ${r.id})" style="font-size:10px; padding:2px 5px;">🗑️ አጥፋ</button>`
+                            : "";
+                        repliesHtml += `<div class="reply-item">
+                            <div class="comment-header">
+                                <span class="comment-user">↳ 👤 ${r.user}</span>
+                                <span>${r.date}</span>
+                            </div>
+                            <div class="comment-body" style="font-size:13px; margin-bottom:5px;">${r.text}</div>
+                            <div style="text-align: left;">${rDeleteBtn}</div>
+                        </div>`;
+                    });
+                }
+
+                let item = `<div class="comment-item">
+                    <div class="comment-header">
+                        <span class="comment-user">👤 ${c.user}</span>
+                        <span>${c.date}</span>
+                    </div>
+                    <div class="comment-body">${c.text}</div>
+                    <div class="comment-footer">
+                        <button class="btn-like" style="${likeBtnColor}" onclick="toggleLike(${c.id})">👍 <span>${c.likes || 0}</span></button>
+                        <button class="btn-reply-toggle" onclick="toggleReplyBox(${c.id})">↩️ ሪፕለይ</button>
+                        ${deleteBtnHtml}
+                    </div>
+                    
+                    <div class="reply-box-area" id="replyBox_${c.id}">
+                        <textarea id="replyInput_${c.id}" placeholder="መልስዎን እዚህ ይጻፉ..."></textarea>
+                        <button class="btn-primary" onclick="postReply(${c.id})" style="margin-top: 5px; width: auto; padding: 5px 15px; font-size: 12px; background-color: #0284c7;">መልስ ላክ</button>
+                    </div>
+
+                    <div class="replies-container" ${c.replies && c.replies.length > 0 ? '' : 'style="display:none;"'}>
+                        ${repliesHtml}
+                    </div>
+                </div>`;
+                container.innerHTML += item;
+            });
+        }
+
+        function toggleLike(commentId) {
+            let activeUser = localStorage.getItem("asunnah_active_user");
+            let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+
+            let comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                if (!comment.likedBy) comment.likedBy = [];
+
+                let index = comment.likedBy.indexOf(activeUser);
+                if (index === -1) {
+                    comment.likedBy.push(activeUser);
+                    comment.likes = (comment.likes || 0) + 1;
+                } else {
+                    comment.likedBy.splice(index, 1);
+                    comment.likes = Math.max(0, (comment.likes || 1) - 1);
+                }
+
+                localStorage.setItem("asunnah_comments", JSON.stringify(comments));
+                loadComments();
+            }
+        }
+
+        function toggleReplyBox(commentId) {
+            let box = document.getElementById(`replyBox_${commentId}`);
+            if (box) {
+                box.style.display = (box.style.display === "block") ? "none" : "block";
+            }
+        }
+
+        function postReply(commentId) {
+            let replyText = document.getElementById(`replyInput_${commentId}`).value.trim();
+            let activeUser = localStorage.getItem("asunnah_active_user");
+
+            if (!replyText) {
+                alert("እባክዎ መልስዎን ይጻፉ!");
+                return;
+            }
+
+            let linkPattern = /(http:\/\/|https:\/\/|www\.|\.com|\.net|\.org|t\.me|bit\.ly)/i;
+            if (linkPattern.test(replyText)) {
+                alert("⚠️ ማስታወሻ፡ ሊንክ መለጠፍ የተከለከለ ነው!");
+                return;
+            }
+
+            let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+            let comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                if (!comment.replies) comment.replies = [];
+                comment.replies.push({
+                    id: Date.now(),
+                    user: activeUser,
+                    text: replyText,
+                    date: new Date().toLocaleString()
+                });
+                localStorage.setItem("asunnah_comments", JSON.stringify(comments));
+                loadComments();
+            }
+        }
+
+        function deleteComment(commentId) {
+            if (confirm("ይህንን አስተያየት ማጥፋት ይፈልጋሉ?")) {
+                let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+                comments = comments.filter(c => c.id !== commentId);
+                localStorage.setItem("asunnah_comments", JSON.stringify(comments));
+                loadComments();
+                if (localStorage.getItem("asunnah_active_user") === "ADMIN_MASTER") loadAdminCommentsControl();
+            }
+        }
+
+        function deleteReply(commentId, replyId) {
+            if (confirm("ይህንን መልስ ማጥፋት ይፈልጋሉ?")) {
+                let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+                let comment = comments.find(c => c.id === commentId);
+                if (comment && comment.replies) {
+                    comment.replies = comment.replies.filter(r => r.id !== replyId);
+                    localStorage.setItem("asunnah_comments", JSON.stringify(comments));
+                    loadComments();
+                }
+            }
+        }
+
+        function loadAdminCommentsControl() {
+            let container = document.getElementById("adminCommentsListContainer");
+            if (!container) return;
+
+            let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+            container.innerHTML = "";
+
+            if (comments.length === 0) {
+                container.innerHTML = `<p style="color: #777; font-size: 13px;">እስካሁን የተሰጠ አስተያየት የለም።</p>`;
+                return;
+            }
+
+            comments.forEach(c => {
+                let item = `<div style="background: #fff; border: 1px solid #cbd5e0; border-radius: 6px; padding: 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="font-weight: bold; color: #0f5132; font-size: 13px;">👤 ${c.user}</span>: 
+                        <span style="font-size: 13px; color: #333;">${c.text}</span>
+                        <div style="font-size: 11px; color: #777; margin-top: 2px;">ቀን: ${c.date} | ላይክ: ${c.likes || 0}</div>
+                    </div>
+                    <button class="btn-delete-comment" onclick="deleteCommentFromAdmin(${c.id})">🗑️ አጥፋ</button>
+                </div>`;
+                container.innerHTML += item;
+            });
+        }
+
+        function deleteCommentFromAdmin(commentId) {
+            if (confirm("እርግጠኛ ኖት ይህንን አስተያየት ከአድሚን ፓነል ማጥፋት ይፈልጋሉ?")) {
+                let comments = JSON.parse(localStorage.getItem("asunnah_comments") || "[]");
+                comments = comments.filter(c => c.id !== commentId);
+                localStorage.setItem("asunnah_comments", JSON.stringify(comments));
+                loadAdminData();
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem("asunnah_active_user");
+            sessionStorage.removeItem("asunnah_session_active");
+            location.href = window.location.pathname;
+        }
+
+        function changePassword() {
+            let oldPass = document.getElementById("oldPassword").value.trim();
+            let newPass = document.getElementById("newPassword").value.trim();
+            let passMsg = document.getElementById("passMsg");
+            let activeUser = localStorage.getItem("asunnah_active_user");
+
+            if (activeUser === "ADMIN_MASTER") {
+                passMsg.style.color = "#e53e3e";
+                passMsg.textContent = "❌ አድሚን ፓስዋርድ ከኮዱ ውስጥ ነው የሚቀየረው!";
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("asunnah_users") || "{}");
+            let userObj = users[activeUser];
+            let currentStoredPass = (typeof userObj === 'object') ? userObj.pass : userObj;
+
+            if (!oldPass || !newPass) {
+                passMsg.style.color = "#e53e3e";
+                passMsg.textContent = "❌ እባክዎ የድሮውን እና አዲሱን ፓስዋርድ ይሙሉ!";
+                return;
+            }
+
+            if (currentStoredPass === oldPass) {
+                if (newPass.length < 4) {
+                    passMsg.style.color = "#e53e3e";
+                    passMsg.textContent = "❌ አዲሱ ፓስዋርድ ቢያንስ 4 ፊደል/ቁጥር መሆን አለበት!";
+                    return;
+                }
+                if (typeof userObj === 'object') {
+                    userObj.pass = newPass;
+                    userObj.mustChangePass = false; // ፓስዋርዱን ስለቀየረው መደበኛ ሁኔታ ይመለሳል
+                } else {
+                    users[activeUser] = { pass: newPass, telegram: "", date: "", mustChangePass: false };
+                }
+                localStorage.setItem("asunnah_users", JSON.stringify(users));
+                passMsg.style.color = "#27ae60";
+                passMsg.textContent = "✅ የሚስጥር ቃልዎ በተሳካ ሁኔታ ተቀይሯል!";
+                document.getElementById("oldPassword").value = "";
+                document.getElementById("newPassword").value = "";
+
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                passMsg.style.color = "#e53e3e";
+                passMsg.textContent = "❌ ያስገቡት አሁን ያለዎት ፓስዋርድ ትክክል አይደለም!";
+            }
+        }
+
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    </script>
+</body>
+</html>
